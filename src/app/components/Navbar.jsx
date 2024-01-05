@@ -49,7 +49,7 @@ const Navbar = () => {
           href={"/"}
           className="text-2xl md:text-3xl text-white font-extrasemibold"
         >
-  Logo
+
         </Link>
         <div className="mobile-menu block md:hidden">
           {!navbarOpen ? (

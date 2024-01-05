@@ -62,7 +62,7 @@ const AboutSection = () => {
           </p>
         </div>
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
-        <h2 className="text-4xl font-bold text-white mb-4">Experience</h2>
+        <h2 id = "experience" className="text-4xl font-bold text-white mb-4">Experience</h2>
         <Experience></Experience>
         </div>
 
