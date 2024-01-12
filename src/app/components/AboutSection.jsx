@@ -5,6 +5,7 @@ import EducationRoadmap from "./EducationComponent/EducationRoadmap";
 import Certifications from "./Certifications";
 import Experience from "./Experience";
 import Link from "next/link";
+
 const TAB_DATA = [
   {
     title: "Skills",
