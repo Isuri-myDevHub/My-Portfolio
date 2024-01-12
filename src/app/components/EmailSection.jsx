@@ -10,40 +10,32 @@ const EmailSection = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
     const data = {
       email: e.target.email.value,
       subject: e.target.subject.value,
       message: e.target.message.value,
     };
-  
-    const endpoint = "/api/send/nodemailer.js";  // Updated API route
-  
+    const JSONdata = JSON.stringify(data);
+    const endpoint = "/api/send";
+
+    // Form the request for sending data to the server.
     const options = {
+      // The method is POST because we are sending data.
       method: "POST",
+      // Tell the server we're sending JSON.
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      // Body of the request is the JSON data we created above.
+      body: JSONdata,
     };
-  
-    try {
-      const response = await fetch(endpoint, options);
-  
-      if (response.ok) {
-        const responseData = await response.json();
-  
-        if (responseData.success) {
-          console.log("Message sent.");
-          setEmailSubmitted(true);
-        } else {
-          console.error("Error sending message:", responseData.error || "Unknown error");
-        }
-      } else {
-        console.error("Error sending message:", response.statusText);
-      }
-    } catch (error) {
-      console.error("Error sending message:", error);
+
+    const response = await fetch(endpoint, options);
+    const resData = await response.json();
+
+    if (response.status === 200) {
+      console.log("Message sent.");
+      setEmailSubmitted(true);
     }
   };
 
@@ -59,15 +51,15 @@ const EmailSection = () => {
         </h5>
         <p className="text-[#ADB7BE] mb-4 max-w-md">
           {" "}
-          I&apos;m currently looking for new opportunities, my inbox is always
-          open. Whether you have a question or just want to say hi, I&apos;ll
-          try my best to get back to you!
+          I'm on the lookout for exciting new opportunities, and my inbox is eagerly awaiting your messages. 
+          Whether you've got a question or just want to drop a friendly 'hello,' I'm here and ready to connect! 
+          I'll do my utmost to respond promptly and enthusiastically.
         </p>
         <div className="socials flex flex-row gap-2">
-          <Link href="github.com">
+          <Link href="https://github.com/IsuriGunaratne">
             <Image src={GithubIcon} alt="Github Icon" />
           </Link>
-          <Link href="linkedin.com">
+          <Link href="https://www.linkedin.com/in/isuri-wijesinghe-gunaratne-ba258420a">
             <Image src={LinkedinIcon} alt="Linkedin Icon" />
           </Link>
         </div>
@@ -75,10 +67,11 @@ const EmailSection = () => {
       <div>
         {emailSubmitted ? (
           <p className="text-green-500 text-sm mt-2">
-            Email sent successfully!
+            Message sent successfully!
           </p>
         ) : (
           <form className="flex flex-col" onSubmit={handleSubmit}>
+           
             <div className="mb-6">
               <label
                 htmlFor="email"
@@ -92,7 +85,7 @@ const EmailSection = () => {
                 id="email"
                 required
                 className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="jacob@google.com"
+                placeholder="isuri@gmail.com"
               />
             </div>
             <div className="mb-6">

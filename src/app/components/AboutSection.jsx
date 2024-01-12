@@ -1,11 +1,10 @@
 "use client";
 import React, { useTransition, useState } from "react";
-import Image from "next/image";
 import TabButton from "./TabButton";
 import EducationRoadmap from "./EducationComponent/EducationRoadmap";
 import Certifications from "./Certifications";
 import Experience from "./Experience";
-
+import Link from "next/link";
 const TAB_DATA = [
   {
     title: "Skills",
@@ -62,27 +61,33 @@ const AboutSection = () => {
           </p>
         </div>
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
-        <h2 id = "experience" className="text-4xl font-bold text-white mb-4">Experience</h2>
         <Experience></Experience>
         </div>
 
       </div>
 
-      <div className="flex flex-row justify-start mt-8">
-            <TabButton
+      <div className="flex flex-row justify-start mt-1">
+
+
+            <TabButton 
               selectTab={() => handleTabChange("skills")}
               active={tab === "skills"}
             >
               {" "}
               Skills{" "}
             </TabButton>
-            <TabButton
+       
+
+          
+            <TabButton 
               selectTab={() => handleTabChange("education")}
               active={tab === "education"}
             >
               {" "}
               Education{" "}
             </TabButton>
+          
+        
             <TabButton
               selectTab={() => handleTabChange("certifications")}
               active={tab === "certifications"}
@@ -90,7 +95,9 @@ const AboutSection = () => {
               {" "}
               Certifications{" "}
             </TabButton>
+   
           </div>
+      
           <div className="mt-8">
             {TAB_DATA.find((t) => t.id === tab).content}
           </div>

@@ -3,8 +3,8 @@ import React from 'react';
 
 const Experience = () => {
   return (
-    <section title ="experience" id="experience">
-
+    <section  id="experience">
+      <h2  className="text-4xl font-bold text-white mb-4">Experience</h2>
       <div className="experience-item">
         <h3 className="text-pink-500 text-xl font-bold mb-2">Trainee Software Engineer</h3>
         <p className="text-gray-500 mb-2">Jul 2023 - Dec 2023</p>
